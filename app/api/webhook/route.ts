@@ -46,30 +46,9 @@ export async function POST(request: NextRequest) {
     const body = formData.get("Body") as string
     const messageSid = formData.get("MessageSid") as string
 
-    console.log("[v0] Received SMS:", { from, body, messageSid })
+    console.log("[v0] Received SMS from Twilio:", { from, body, messageSid })
 
-    // Load existing messages
-    const messages = await getMessages()
-
-    // Add new message
-    const newMessage: Message = {
-      id: messageSid || `msg-${Date.now()}`,
-      from,
-      body,
-      timestamp: new Date().toISOString(),
-    }
-
-    messages.unshift(newMessage) // Add to beginning
-
-    // Keep only last 50 messages
-    if (messages.length > 50) {
-      messages.splice(50)
-    }
-
-    // Save messages
-    await saveMessages(messages)
-
-    console.log("[v0] Message saved successfully")
+    // We'll fetch them directly from Twilio API in the messages endpoint
 
     // Respond to Twilio (empty TwiML response)
     return new NextResponse('<?xml version="1.0" encoding="UTF-8"?><Response></Response>', {
