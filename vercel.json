@@ -1,10 +1,5 @@
 {
   "framework": "nextjs",
   "buildCommand": "next build",
-  "installCommand": "npm install",
-  "env": {
-    "TWILIO_PHONE_NUMBER": "@twilio_phone_number",
-    "TWILIO_ACCOUNT_SID": "@twilio_account_sid",
-    "TWILIO_AUTH_TOKEN": "@twilio_auth_token"
-  }
+  "installCommand": "npm install"
 }
