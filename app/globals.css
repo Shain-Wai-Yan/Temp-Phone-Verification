@@ -124,27 +124,29 @@
     @apply bg-background text-foreground antialiased;
   }
 
-  /* Add smooth scrolling and better mobile touch handling */
+  /* Added smooth scrolling and better text rendering */
   html {
     scroll-behavior: smooth;
-    -webkit-tap-highlight-color: transparent;
   }
 
-  /* Improve text rendering */
-  body {
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* Improved selection colors */
+  ::selection {
+    @apply bg-primary/20 text-primary-foreground;
+  }
+
+  /* Better focus visibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
   }
 }
 
-/* Add custom animations */
+/* Added custom animations for polish */
 @layer utilities {
   .animate-in {
-    animation: fadeIn 0.3s ease-in;
+    animation: animate-in 0.3s ease-out;
   }
 
-  @keyframes fadeIn {
+  @keyframes animate-in {
     from {
       opacity: 0;
       transform: translateY(10px);
